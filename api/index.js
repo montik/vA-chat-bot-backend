@@ -24,13 +24,13 @@ app.post("/api/chat", async (req, res) => {
             { role: "system", content: "You are a helpful assistant." },
             {
                 role: "user",
-                content: "Write a haiku about recursion in programming.",
+                content: prompt,
             },
         ],
         store: true,
     });
 
-    res.json({ reply: data.choices[0].message.content });
+    res.json({ reply: "Test " + completion.choices[0].message.content });
   } catch (error) {
     console.error("Error communicating with ChatGPT API:", error);
     // res.status(500).send("Error communicating with ChatGPT API");
