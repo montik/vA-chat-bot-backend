@@ -7,8 +7,12 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const openai = new OpenAI();
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+app.use(cors({
+  origin: 'http://localhost',
+  allowedHeaders: ['Content-Type']
+}));
 
 // Middleware to parse JSON
 app.use(express.json());
